@@ -1,0 +1,144 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "confirm": "Confirm",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "search": "Search",
+    "close": "Close",
+    "edit": "Edit",
+    "create": "Create",
+    "update": "Update"
+  },
+  "auth": {
+    "login": {
+      "title": "Sign In",
+      "description": "Enter your credentials to access your account",
+      "email": "Email",
+      "emailPlaceholder": "email@example.com",
+      "password": "Password",
+      "passwordPlaceholder": "••••••••",
+      "submit": "Sign In",
+      "submitting": "Signing in...",
+      "forgotPassword": "Forgot password?",
+      "noAccount": "Don't have an account?",
+      "register": "Register"
+    },
+    "register": {
+      "title": "Create Account",
+      "description": "Enter your information to create an account",
+      "name": "Full Name",
+      "namePlaceholder": "Full Name",
+      "email": "Email",
+      "emailPlaceholder": "email@example.com",
+      "password": "Password",
+      "passwordPlaceholder": "••••••••",
+      "confirmPassword": "Confirm Password",
+      "confirmPasswordPlaceholder": "••••••••",
+      "submit": "Create Account",
+      "submitting": "Creating account...",
+      "hasAccount": "Already have an account?",
+      "login": "Sign In",
+      "success": "Account created successfully! Redirecting..."
+    },
+    "forgotPassword": {
+      "title": "Forgot Password",
+      "description": "Enter your email to receive a password reset link",
+      "email": "Email",
+      "emailPlaceholder": "email@example.com",
+      "submit": "Send Reset Link",
+      "submitting": "Sending...",
+      "success": "If an account exists with this email, we've sent a password reset link.",
+      "backToLogin": "Back to Sign In"
+    },
+    "resetPassword": {
+      "title": "Reset Password",
+      "description": "Enter your new password",
+      "password": "New Password",
+      "passwordPlaceholder": "••••••••",
+      "confirmPassword": "Confirm New Password",
+      "confirmPasswordPlaceholder": "••••••••",
+      "submit": "Reset Password",
+      "submitting": "Resetting...",
+      "success": "Password reset successfully! Redirecting...",
+      "invalidToken": "Invalid or expired reset link.",
+      "backToLogin": "Back to Sign In"
+    },
+    "otp": {
+      "title": "Verify Code",
+      "description": "Enter the verification code sent to your email",
+      "submit": "Verify",
+      "submitting": "Verifying...",
+      "success": "Verification successful! Redirecting...",
+      "invalidLength": "Code must be {length} digits",
+      "resendCode": "Resend code",
+      "resendIn": "Resend code in {time}",
+      "backToLogin": "Back to Sign In"
+    },
+    "logout": "Sign Out",
+    "loggingOut": "Signing out...",
+    "logoutDialog": {
+      "title": "Sign Out",
+      "confirm": "Are you sure you want to sign out?"
+    },
+    "social": {
+      "orContinueWith": "Or continue with",
+      "continueWithGoogle": "Continue with Google",
+      "continueWithFacebook": "Continue with Facebook",
+      "continueWithInstagram": "Continue with Instagram",
+      "continueWithLine": "Continue with LINE",
+      "signingIn": "Signing in...",
+      "signingUp": "Signing up..."
+    },
+    "errors": {
+      "invalidCredentials": "Invalid email or password",
+      "emailInUse": "This email is already registered",
+      "weakPassword": "Password is too weak",
+      "networkError": "Network error. Please try again.",
+      "unknownError": "An error occurred. Please try again."
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "welcome": "Welcome, {name}!",
+    "description": "Welcome to your Dashboard",
+    "stats": {
+      "totalUsers": "Total Users",
+      "revenue": "Revenue",
+      "orders": "Orders",
+      "activity": "Activity",
+      "comparedToLastMonth": "{percentage} compared to last month"
+    },
+    "accountInfo": {
+      "title": "Account Information",
+      "description": "Your login information",
+      "email": "Email",
+      "id": "ID"
+    }
+  },
+  "validation": {
+    "required": "{field} is required",
+    "email": "Please enter a valid email address",
+    "minLength": "{field} must be at least {min} characters",
+    "maxLength": "{field} must be at most {max} characters",
+    "passwordMatch": "Passwords do not match",
+    "passwordStrength": "Password must contain at least one uppercase letter and one number"
+  },
+  "navigation": {
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "settings": "Settings",
+    "profile": "Profile",
+    "login": "Sign In",
+    "logout": "Sign Out"
+  },
+  "metadata": {
+    "title": "Next Auth Template",
+    "description": "A Next.js template with authentication"
+  }
+}

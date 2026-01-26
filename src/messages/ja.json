@@ -1,0 +1,144 @@
+{
+  "common": {
+    "loading": "読み込み中...",
+    "error": "エラーが発生しました",
+    "save": "保存",
+    "cancel": "キャンセル",
+    "delete": "削除",
+    "confirm": "確認",
+    "back": "戻る",
+    "next": "次へ",
+    "submit": "送信",
+    "search": "検索",
+    "close": "閉じる",
+    "edit": "編集",
+    "create": "作成",
+    "update": "更新"
+  },
+  "auth": {
+    "login": {
+      "title": "ログイン",
+      "description": "アカウントにアクセスするための認証情報を入力してください",
+      "email": "メールアドレス",
+      "emailPlaceholder": "email@example.com",
+      "password": "パスワード",
+      "passwordPlaceholder": "••••••••",
+      "submit": "ログイン",
+      "submitting": "ログイン中...",
+      "forgotPassword": "パスワードをお忘れですか？",
+      "noAccount": "アカウントをお持ちでないですか？",
+      "register": "新規登録"
+    },
+    "register": {
+      "title": "アカウント作成",
+      "description": "アカウントを作成するための情報を入力してください",
+      "name": "氏名",
+      "namePlaceholder": "山田太郎",
+      "email": "メールアドレス",
+      "emailPlaceholder": "email@example.com",
+      "password": "パスワード",
+      "passwordPlaceholder": "••••••••",
+      "confirmPassword": "パスワード確認",
+      "confirmPasswordPlaceholder": "••••••••",
+      "submit": "アカウント作成",
+      "submitting": "作成中...",
+      "hasAccount": "すでにアカウントをお持ちですか？",
+      "login": "ログイン",
+      "success": "アカウントが作成されました！リダイレクト中..."
+    },
+    "forgotPassword": {
+      "title": "パスワードをお忘れの方",
+      "description": "パスワードリセットリンクを受け取るためのメールアドレスを入力してください",
+      "email": "メールアドレス",
+      "emailPlaceholder": "email@example.com",
+      "submit": "リセットリンクを送信",
+      "submitting": "送信中...",
+      "success": "このメールアドレスにアカウントが存在する場合、パスワードリセットリンクを送信しました。",
+      "backToLogin": "ログインに戻る"
+    },
+    "resetPassword": {
+      "title": "パスワードリセット",
+      "description": "新しいパスワードを入力してください",
+      "password": "新しいパスワード",
+      "passwordPlaceholder": "••••••••",
+      "confirmPassword": "新しいパスワード確認",
+      "confirmPasswordPlaceholder": "••••••••",
+      "submit": "パスワードをリセット",
+      "submitting": "リセット中...",
+      "success": "パスワードがリセットされました！リダイレクト中...",
+      "invalidToken": "無効または期限切れのリセットリンクです。",
+      "backToLogin": "ログインに戻る"
+    },
+    "otp": {
+      "title": "コード確認",
+      "description": "メールに送信された確認コードを入力してください",
+      "submit": "確認",
+      "submitting": "確認中...",
+      "success": "確認完了！リダイレクト中...",
+      "invalidLength": "コードは{length}桁である必要があります",
+      "resendCode": "コードを再送信",
+      "resendIn": "{time}後に再送信可能",
+      "backToLogin": "ログインに戻る"
+    },
+    "logout": "ログアウト",
+    "loggingOut": "ログアウト中...",
+    "logoutDialog": {
+      "title": "ログアウト",
+      "confirm": "本当にログアウトしますか？"
+    },
+    "social": {
+      "orContinueWith": "または",
+      "continueWithGoogle": "Googleで続ける",
+      "continueWithFacebook": "Facebookで続ける",
+      "continueWithInstagram": "Instagramで続ける",
+      "continueWithLine": "LINEで続ける",
+      "signingIn": "ログイン中...",
+      "signingUp": "登録中..."
+    },
+    "errors": {
+      "invalidCredentials": "メールアドレスまたはパスワードが正しくありません",
+      "emailInUse": "このメールアドレスは既に登録されています",
+      "weakPassword": "パスワードが弱すぎます",
+      "networkError": "ネットワークエラーです。もう一度お試しください。",
+      "unknownError": "エラーが発生しました。もう一度お試しください。"
+    }
+  },
+  "dashboard": {
+    "title": "ダッシュボード",
+    "welcome": "ようこそ、{name}さん！",
+    "description": "ダッシュボードへようこそ",
+    "stats": {
+      "totalUsers": "総ユーザー数",
+      "revenue": "収益",
+      "orders": "注文数",
+      "activity": "アクティビティ",
+      "comparedToLastMonth": "先月比 {percentage}"
+    },
+    "accountInfo": {
+      "title": "アカウント情報",
+      "description": "ログイン情報",
+      "email": "メールアドレス",
+      "id": "ID"
+    }
+  },
+  "validation": {
+    "required": "{field}は必須です",
+    "email": "有効なメールアドレスを入力してください",
+    "minLength": "{field}は{min}文字以上である必要があります",
+    "maxLength": "{field}は{max}文字以下である必要があります",
+    "passwordMatch": "パスワードが一致しません",
+    "passwordStrength": "パスワードには少なくとも1つの大文字と1つの数字が必要です"
+  },
+  "navigation": {
+    "home": "ホーム",
+    "dashboard": "ダッシュボード",
+    "settings": "設定",
+    "profile": "プロフィール",
+    "login": "ログイン",
+    "logout": "ログアウト"
+  },
+  "metadata": {
+    "title": "Next Auth Template",
+    "description": "認証機能付きNext.jsテンプレート"
+  }
+}
