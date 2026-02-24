@@ -7,7 +7,7 @@ import { Link } from "@/i18n/routing";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/core/lib/utils";
-import { getSearchIndex, type SearchItem } from "../config/search-index";
+import { getSearchIndex } from "../config/search-index";
 
 interface DocsSearchProps {
   className?: string;
@@ -30,7 +30,7 @@ export function DocsSearch({ className }: DocsSearchProps) {
         includeScore: true,
         minMatchCharLength: 2,
       }),
-    [searchIndex],
+    [searchIndex]
   );
 
   const results = useMemo(() => {
@@ -52,7 +52,7 @@ export function DocsSearch({ className }: DocsSearchProps) {
       } else if (e.key === "ArrowDown") {
         e.preventDefault();
         setSelectedIndex((prev) =>
-          prev < results.length - 1 ? prev + 1 : prev,
+          prev < results.length - 1 ? prev + 1 : prev
         );
       } else if (e.key === "ArrowUp") {
         e.preventDefault();
@@ -113,13 +113,13 @@ export function DocsSearch({ className }: DocsSearchProps) {
   return (
     <div className={cn("relative", className)}>
       {searchOpen ? (
-        <div className="relative w-64">
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+        <div className='relative w-64'>
+          <div className='relative'>
+            <Search className='text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2' />
             <Input
               ref={inputRef}
-              type="search"
-              placeholder="Search documentation..."
+              type='search'
+              placeholder='Search documentation...'
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               onBlur={(e) => {
@@ -128,19 +128,19 @@ export function DocsSearch({ className }: DocsSearchProps) {
                   setTimeout(() => setSearchOpen(false), 200);
                 }
               }}
-              className="h-9 w-full pl-9 pr-9"
+              className='h-9 w-full pr-9 pl-9'
             />
             <Button
-              variant="ghost"
-              size="icon"
-              className="absolute right-1 top-1/2 h-7 w-7 -translate-y-1/2"
+              variant='ghost'
+              size='icon'
+              className='absolute top-1/2 right-1 h-7 w-7 -translate-y-1/2'
               onClick={() => {
                 setSearchOpen(false);
                 setQuery("");
               }}
-              aria-label="Close search"
+              aria-label='Close search'
             >
-              <X className="h-4 w-4" />
+              <X className='h-4 w-4' />
             </Button>
           </div>
 
@@ -148,11 +148,11 @@ export function DocsSearch({ className }: DocsSearchProps) {
           {query.length >= 2 && (
             <div
               ref={resultsRef}
-              className="absolute z-50 mt-1 max-h-96 w-full overflow-y-auto rounded-md border bg-popover shadow-lg"
+              className='bg-popover absolute z-50 mt-1 max-h-96 w-full overflow-y-auto rounded-md border shadow-lg'
               onMouseDown={(e) => e.preventDefault()}
             >
               {results.length > 0 ? (
-                <div className="p-1">
+                <div className='p-1'>
                   {results.map((item, index) => (
                     <Link
                       key={`${item.href}-${index}`}
@@ -165,18 +165,18 @@ export function DocsSearch({ className }: DocsSearchProps) {
                         "block rounded-sm px-3 py-2 text-sm transition-colors",
                         "hover:bg-accent hover:text-accent-foreground",
                         selectedIndex === index &&
-                          "bg-accent text-accent-foreground",
+                          "bg-accent text-accent-foreground"
                       )}
                     >
-                      <div className="font-medium">{item.title}</div>
-                      <div className="text-xs text-muted-foreground">
+                      <div className='font-medium'>{item.title}</div>
+                      <div className='text-muted-foreground text-xs'>
                         {item.section}
                       </div>
                     </Link>
                   ))}
                 </div>
               ) : (
-                <div className="p-4 text-center text-sm text-muted-foreground">
+                <div className='text-muted-foreground p-4 text-center text-sm'>
                   No results found for &quot;{query}&quot;
                 </div>
               )}
@@ -185,12 +185,12 @@ export function DocsSearch({ className }: DocsSearchProps) {
         </div>
       ) : (
         <Button
-          variant="ghost"
-          size="icon"
+          variant='ghost'
+          size='icon'
           onClick={() => setSearchOpen(true)}
-          aria-label="Search"
+          aria-label='Search'
         >
-          <Search className="h-5 w-5" />
+          <Search className='h-5 w-5' />
         </Button>
       )}
     </div>

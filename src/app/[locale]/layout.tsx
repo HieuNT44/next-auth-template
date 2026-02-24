@@ -3,9 +3,8 @@ import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { Providers } from "@/core/components/providers";
+import { SetLocaleLang } from "@/core/components/set-locale-lang";
 import { routing } from "@/i18n/routing";
-import { fontClassName, fontVariable } from "@/core/config/fonts";
-import "../globals.css";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -39,12 +38,11 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} suppressHydrationWarning className={fontVariable}>
-      <body className={fontClassName}>
-        <NextIntlClientProvider messages={messages}>
-          <Providers>{children}</Providers>
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <>
+      <SetLocaleLang locale={locale} />
+      <NextIntlClientProvider messages={messages}>
+        <Providers>{children}</Providers>
+      </NextIntlClientProvider>
+    </>
   );
 }
