@@ -13,10 +13,10 @@ import { Label } from "@/components/ui/label";
 import { CreditCard } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, Suspense } from "react";
 import { toast } from "sonner";
 
-export default function PaymentGmoCheckoutPage() {
+function PaymentGmoCheckoutContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const locale = useLocale();
@@ -204,5 +204,21 @@ export default function PaymentGmoCheckoutPage() {
         </CardContent>
       </Card>
     </div>
+  );
+}
+
+function PaymentGmoCheckoutFallback() {
+  return (
+    <div className='payment-gmo-checkout flex min-h-[200px] items-center justify-center'>
+      <p className='text-muted-foreground'>Loading...</p>
+    </div>
+  );
+}
+
+export default function PaymentGmoCheckoutPage() {
+  return (
+    <Suspense fallback={<PaymentGmoCheckoutFallback />}>
+      <PaymentGmoCheckoutContent />
+    </Suspense>
   );
 }
