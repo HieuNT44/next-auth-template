@@ -227,9 +227,17 @@
         "title": "Change avatar",
         "description": "Upload a new profile picture.",
         "currentAvatar": "Current avatar",
-        "uploadHint": "JPG, PNG or GIF. Max 2MB.",
+        "uploadHint": "JPG, PNG or WebP. Max 2MB.",
         "upload": "Upload photo",
-        "comingSoon": "Coming soon."
+        "chooseImage": "Choose image",
+        "cropTitle": "Crop photo",
+        "cropApply": "Apply",
+        "newAvatar": "New avatar",
+        "saveAvatar": "Save avatar",
+        "saved": "Avatar updated.",
+        "invalidType": "Invalid file type. Use JPG, PNG or WebP.",
+        "fileTooBig": "File is too large. Max 2MB.",
+        "removeAvatar": "Remove avatar"
       },
       "changePassword": {
         "title": "Change password",
