@@ -28,7 +28,12 @@ import {
   SidebarRail,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { accountItems, dashboardItems, hasSubmenu } from "@/core/constants";
+import {
+  accountItems,
+  dashboardItems,
+  managementItems,
+  hasSubmenu,
+} from "@/core/constants";
 import type {
   DashboardItem,
   DashboardItemWithChildren,
@@ -228,6 +233,118 @@ export function AppSidebar() {
                       className='hover:bg-[#E4E4E7]'
                     >
                       <Link href={item.url}>
+                        <item.icon />
+                        <span>{t(item.title)}</span>
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                )
+              )}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+        <SidebarGroup>
+          <SidebarGroupLabel>{t("management")}</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {managementItems.map((item: DashboardItem) =>
+                hasSubmenu(item) ? (
+                  <SidebarMenuItem key={item.name}>
+                    {isCollapsed ? (
+                      <DropdownMenu
+                        open={openFlyoutKey === item.name}
+                        onOpenChange={(open) =>
+                          setOpenFlyoutKey(open ? item.name : null)
+                        }
+                        modal={false}
+                      >
+                        <DropdownMenuTrigger asChild>
+                          <SidebarMenuButton
+                            tooltip={t(item.title)}
+                            onMouseEnter={() => handleFlyoutEnter(item.name)}
+                            onMouseLeave={() => handleFlyoutLeave(item.name)}
+                            className='data-[state=open]:text-sidebar-accent-foreground hover:bg-[#E4E4E7] data-[state=open]:bg-[#E4E4E7]'
+                          >
+                            <item.icon />
+                            <span>{t(item.title)}</span>
+                            <ChevronRight className='ml-auto size-4 shrink-0 transition-transform group-data-[state=open]/collapsible:rotate-90' />
+                          </SidebarMenuButton>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent
+                          side='right'
+                          sideOffset={4}
+                          align='start'
+                          onMouseEnter={() => handleFlyoutEnter(item.name)}
+                          onMouseLeave={() => handleFlyoutLeave(item.name)}
+                          className='min-w-44 rounded-md border bg-[#F4F4F5]'
+                        >
+                          {item.children.map((sub: SubMenuItem) => (
+                            <DropdownMenuItem asChild key={sub.url}>
+                              <Link
+                                href={sub.url}
+                                className='flex cursor-pointer items-center rounded-sm px-2 py-1.5 text-sm outline-none hover:bg-[#E4E4E7] focus:bg-[#E4E4E7] data-[active=true]:bg-[#E4E4E7]'
+                              >
+                                {t(sub.title)}
+                              </Link>
+                            </DropdownMenuItem>
+                          ))}
+                        </DropdownMenuContent>
+                      </DropdownMenu>
+                    ) : (
+                      <Collapsible
+                        defaultOpen={isGroupActive(item)}
+                        className='group/collapsible'
+                      >
+                        <CollapsibleTrigger asChild>
+                          <SidebarMenuButton
+                            tooltip={t(item.title)}
+                            className='data-[state=open]:text-sidebar-accent-foreground hover:bg-[#E4E4E7] data-[state=open]:bg-[#E4E4E7]'
+                          >
+                            <item.icon />
+                            <span>{t(item.title)}</span>
+                            <ChevronRight className='ml-auto size-4 shrink-0 transition-transform group-data-[state=open]/collapsible:rotate-90' />
+                          </SidebarMenuButton>
+                        </CollapsibleTrigger>
+                        <CollapsibleContent>
+                          <SidebarMenuSub>
+                            {item.children.map((sub: SubMenuItem) => (
+                              <SidebarMenuSubItem
+                                key={sub.url}
+                                data-active={
+                                  isActive(sub.url) ? "true" : undefined
+                                }
+                              >
+                                <SidebarMenuSubButton
+                                  asChild
+                                  isActive={isActive(sub.url)}
+                                >
+                                  <Link href={sub.url}>{t(sub.title)}</Link>
+                                </SidebarMenuSubButton>
+                              </SidebarMenuSubItem>
+                            ))}
+                          </SidebarMenuSub>
+                        </CollapsibleContent>
+                      </Collapsible>
+                    )}
+                  </SidebarMenuItem>
+                ) : (
+                  <SidebarMenuItem
+                    key={item.name}
+                    data-active={
+                      item.url
+                        ? isActive(item.url)
+                          ? "true"
+                          : undefined
+                        : undefined
+                    }
+                  >
+                    <SidebarMenuButton
+                      asChild
+                      isActive={item.url ? isActive(item.url) : false}
+                      tooltip={t(item.title)}
+                      className='hover:bg-[#E4E4E7] data-[active=true]:bg-gray-200 data-[active=true]:text-gray-900 dark:data-[active=true]:bg-gray-700 dark:data-[active=true]:text-gray-100'
+                    >
+                      <Link href={item.url ?? "#"}>
                         <item.icon />
                         <span>{t(item.title)}</span>
                       </Link>

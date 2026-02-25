@@ -1,6 +1,8 @@
 import type { LucideIcon } from "lucide-react";
 import {
+  ArrowLeftRight,
   BarChart3,
+  Bell,
   Building2,
   Coins,
   CreditCard,
@@ -9,10 +11,12 @@ import {
   GraduationCap,
   HeartPulse,
   LayoutDashboard,
+  Package,
   ShieldCheck,
   ShoppingCart,
   TrendingUp,
   User,
+  Users,
   Wallet,
 } from "lucide-react";
 
@@ -146,7 +150,93 @@ export const dashboardItems: DashboardItem[] = [
   },
 ];
 
+export const managementItems: DashboardItem[] = [
+  {
+    name: "userManager",
+    title: "userManager",
+    icon: Users,
+    children: [
+      {
+        name: "userManagerDashboard",
+        title: "dashboard",
+        url: "/management/users",
+      },
+      { name: "userManagerList", title: "list", url: "/management/users/list" },
+    ],
+  },
+  {
+    name: "fileManager",
+    title: "fileManager",
+    icon: FileStack,
+    children: [
+      {
+        name: "fileManagerDashboard",
+        title: "dashboard",
+        url: "/management/files",
+      },
+      { name: "fileManagerList", title: "list", url: "/management/files/list" },
+    ],
+  },
+  {
+    name: "productManager",
+    title: "productManager",
+    icon: Package,
+    children: [
+      {
+        name: "productManagerDashboard",
+        title: "dashboard",
+        url: "/management/products",
+      },
+      {
+        name: "productManagerList",
+        title: "list",
+        url: "/management/products/list",
+      },
+    ],
+  },
+  {
+    name: "companyManager",
+    title: "companyManager",
+    icon: Building2,
+    children: [
+      {
+        name: "companyManagerDashboard",
+        title: "dashboard",
+        url: "/management/companies",
+      },
+      {
+        name: "companyManagerList",
+        title: "list",
+        url: "/management/companies/list",
+      },
+    ],
+  },
+  {
+    name: "transactionsManager",
+    title: "transactionsManager",
+    icon: ArrowLeftRight,
+    children: [
+      {
+        name: "transactionsManagerDashboard",
+        title: "dashboard",
+        url: "/management/transactions",
+      },
+      {
+        name: "transactionsManagerList",
+        title: "list",
+        url: "/management/transactions/list",
+      },
+    ],
+  },
+];
+
 export const accountItems: DashboardItem[] = [
+  {
+    name: "notifications",
+    title: "notifications",
+    url: "/notifications",
+    icon: Bell,
+  },
   {
     name: "profile",
     title: "profile",

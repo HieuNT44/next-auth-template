@@ -11,6 +11,12 @@ export interface BreadcrumbRoute {
 
 const BREADCRUMB_ROUTES: BreadcrumbRoute[] = [
   { path: "/", titleKey: "dashboard" },
+  { path: "/notifications", titleKey: "notifications" },
+  {
+    path: "/notifications/setting",
+    titleKey: "notificationSettings",
+    parentPath: "/notifications",
+  },
   { path: "/profile", titleKey: "profile" },
   { path: "/profile/settings", titleKey: "settings", parentPath: "/profile" },
   { path: "/billing", titleKey: "billing" },

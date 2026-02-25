@@ -5,7 +5,12 @@
 export { DEFAULT_AVATAR_PATH } from "./constants/common";
 export { getBreadcrumb } from "./constants/breadcrumb";
 export type { BreadcrumbRoute } from "./constants/breadcrumb";
-export { accountItems, dashboardItems, hasSubmenu } from "./constants/menu";
+export {
+  accountItems,
+  dashboardItems,
+  managementItems,
+  hasSubmenu,
+} from "./constants/menu";
 export type {
   DashboardItem,
   DashboardItemBase,

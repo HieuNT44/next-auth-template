@@ -2,7 +2,7 @@
 
 import React from "react";
 import { AppSidebar } from "@/components/app-sidebar";
-import { NotificationButton } from "@/components/notification-button";
+import { NotificationButton } from "@/features/notifications";
 import { ThemeModeToggle } from "@/components/theme-mode-toggle";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import {
