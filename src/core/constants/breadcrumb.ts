@@ -32,6 +32,15 @@ const BREADCRUMB_ROUTES: BreadcrumbRoute[] = [
   { path: "/dashboard/academy", titleKey: "academy", parentPath: "/" },
   { path: "/dashboard/hospital", titleKey: "hospital", parentPath: "/" },
   { path: "/dashboard/finance", titleKey: "finance", parentPath: "/" },
+  { path: "/users", titleKey: "userManagerList", parentPath: "/users" },
+  { path: "/users", titleKey: "userManager" },
+  { path: "/users/dashboard", titleKey: "dashboard", parentPath: "/users" },
+  {
+    path: "/file-manage/dashboard",
+    titleKey: "dashboard",
+    parentPath: "/file-manage",
+  },
+  { path: "/file-manage", titleKey: "fileManager" },
 ];
 
 /**
@@ -60,8 +69,9 @@ export function getBreadcrumb(
   let current: BreadcrumbRoute | undefined = matched;
   while (current) {
     chain.unshift(current);
-    current = current.parentPath
-      ? BREADCRUMB_ROUTES.find((r) => r.path === current!.parentPath)
+    const parentPath: string | undefined = current.parentPath;
+    current = parentPath
+      ? BREADCRUMB_ROUTES.find((r) => r.path === parentPath && r !== current)
       : undefined;
   }
 

@@ -159,9 +159,9 @@ export const managementItems: DashboardItem[] = [
       {
         name: "userManagerDashboard",
         title: "dashboard",
-        url: "/management/users",
+        url: "/users/dashboard",
       },
-      { name: "userManagerList", title: "list", url: "/management/users/list" },
+      { name: "userManagerList", title: "list", url: "/users" },
     ],
   },
   {
@@ -172,7 +172,7 @@ export const managementItems: DashboardItem[] = [
       {
         name: "fileManagerDashboard",
         title: "dashboard",
-        url: "/management/files",
+        url: "/file-manage/dashboard",
       },
       { name: "fileManagerList", title: "list", url: "/management/files/list" },
     ],
