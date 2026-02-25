@@ -16,10 +16,13 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import {
   ImageDropzone,
   ImageEditorDialog,
+  ImageLightbox,
+  useImageLightbox,
   validateFiles,
   cropImageToBlob,
   type CropData,
 } from "@/core/image-handle";
+import { DEFAULT_AVATAR_PATH } from "@/core/constants";
 
 const AVATAR_VALIDATION = {
   maxSizeInMb: 2,
@@ -46,6 +49,7 @@ export function ChangeAvatarSection({
   const [isSaving, setIsSaving] = useState(false);
   /** When true, user removed avatar → show dropzone only */
   const [removedByUser, setRemovedByUser] = useState(false);
+  const { lightboxSrc, openLightbox, closeLightbox } = useImageLightbox();
 
   const displayUrl = removedByUser
     ? (croppedPreviewUrl ?? undefined)
@@ -139,10 +143,17 @@ export function ChangeAvatarSection({
       </CardHeader>
       <CardContent className='flex flex-col items-start gap-6'>
         <div className='flex flex-col gap-4 sm:flex-row sm:items-center'>
-          <Avatar className='h-24 w-24 shrink-0'>
-            <AvatarImage src={displayUrl} alt='' />
-            <AvatarFallback className='text-2xl'>U</AvatarFallback>
-          </Avatar>
+          <button
+            type='button'
+            onClick={() => openLightbox(displayUrl ?? DEFAULT_AVATAR_PATH)}
+            className='change-avatar-section-avatar focus:ring-ring rounded-full focus:ring-2 focus:ring-offset-2 focus:outline-none'
+            aria-label='View avatar'
+          >
+            <Avatar className='border-border h-24 w-24 shrink-0 overflow-hidden rounded-full border-2'>
+              <AvatarImage src={displayUrl ?? DEFAULT_AVATAR_PATH} alt='' />
+              <AvatarFallback className='text-2xl'>U</AvatarFallback>
+            </Avatar>
+          </button>
           <div className='min-w-0'>
             <p className='text-sm font-medium'>
               {croppedPreviewUrl ? t("newAvatar") : t("currentAvatar")}
@@ -201,6 +212,7 @@ export function ChangeAvatarSection({
           title={t("cropTitle")}
           applyLabel={t("cropApply")}
         />
+        <ImageLightbox src={lightboxSrc} onClose={closeLightbox} alt='' />
       </CardContent>
     </Card>
   );

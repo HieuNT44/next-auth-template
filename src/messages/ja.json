@@ -135,7 +135,13 @@
     "settings": "設定",
     "profile": "プロフィール",
     "login": "ログイン",
-    "logout": "ログアウト"
+    "logout": "ログアウト",
+    "upgradeToPro": "Proにアップグレード",
+    "upgradePlan": "プランアップグレード",
+    "account": "アカウント",
+    "billing": "請求",
+    "notifications": "通知",
+    "language": "言語"
   },
   "profile": {
     "overview": {

@@ -135,7 +135,13 @@
     "settings": "Settings",
     "profile": "Profile",
     "login": "Sign In",
-    "logout": "Sign Out"
+    "logout": "Sign Out",
+    "upgradeToPro": "Upgrade to Pro",
+    "upgradePlan": "Upgrade plan",
+    "account": "Account",
+    "billing": "Billing",
+    "notifications": "Notifications",
+    "language": "Language"
   },
   "profile": {
     "overview": {

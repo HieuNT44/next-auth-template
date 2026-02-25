@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useCallback } from "react";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { cn } from "@/core/lib/utils";
 
 export interface ImageLightboxProps {
@@ -33,6 +33,9 @@ function ImageLightbox({
         onPointerDownOutside={onClose}
         onEscapeKeyDown={onClose}
       >
+        <DialogTitle className='sr-only'>
+          {alt ? `View image: ${alt}` : "View image"}
+        </DialogTitle>
         {src && (
           /* eslint-disable-next-line @next/next/no-img-element -- lightbox supports blob/external URLs */
           <img

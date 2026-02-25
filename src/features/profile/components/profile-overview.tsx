@@ -1,6 +1,7 @@
 "use client";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { ImageLightbox, useImageLightbox } from "@/core/image-handle";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -26,6 +27,7 @@ import {
   User,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { DEFAULT_AVATAR_PATH } from "@/core/constants";
 import type { Profile } from "../types";
 
 interface ProfileOverviewProps {
@@ -35,6 +37,8 @@ interface ProfileOverviewProps {
 
 export function ProfileOverview({ profile, locale }: ProfileOverviewProps) {
   const t = useTranslations("profile.overview");
+  const { lightboxSrc, openLightbox, closeLightbox } = useImageLightbox();
+  const avatarSrc = profile.image ?? DEFAULT_AVATAR_PATH;
   const initials = profile.name
     ? profile.name
         .split(" ")
@@ -60,15 +64,22 @@ export function ProfileOverview({ profile, locale }: ProfileOverviewProps) {
       <div className='flex flex-col gap-6 md:flex-row md:items-start'>
         <Card className='flex shrink-0 flex-col gap-4 p-6 md:max-w-[380px]'>
           <div className='text-center'>
-            <div className='border-primary mx-auto mb-4 flex h-48 w-48 items-center justify-center rounded-full border-2'>
-              <Avatar className='h-full w-full'>
-                <AvatarImage
-                  src={profile.image ?? undefined}
-                  alt={profile.name ?? "User"}
-                />
+            <button
+              type='button'
+              onClick={() => openLightbox(avatarSrc)}
+              className='profile-overview-avatar border-primary focus:ring-ring mx-auto mb-4 flex h-48 w-48 cursor-pointer items-center justify-center rounded-full border-2 focus:ring-2 focus:ring-offset-2 focus:outline-none'
+              aria-label='View avatar'
+            >
+              <Avatar className='border-border h-full w-full overflow-hidden rounded-full border-2'>
+                <AvatarImage src={avatarSrc} alt={profile.name ?? "User"} />
                 <AvatarFallback className='text-2xl'>{initials}</AvatarFallback>
               </Avatar>
-            </div>
+            </button>
+            <ImageLightbox
+              src={lightboxSrc}
+              onClose={closeLightbox}
+              alt={profile.name ?? "User"}
+            />
             <CardTitle>{profile.name ?? "TOMOSIA"}</CardTitle>
             <CardDescription>{profile.email ?? ""}</CardDescription>
           </div>
