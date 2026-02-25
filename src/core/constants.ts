@@ -1,2 +1,15 @@
-/** Default avatar image when user has no profile image (public path). */
-export const DEFAULT_AVATAR_PATH = "/image/avatar_men.png";
+/**
+ * Re-export from constants folder for build compatibility.
+ * All actual exports live in ./constants/index.ts
+ */
+export { DEFAULT_AVATAR_PATH } from "./constants/common";
+export { getBreadcrumb } from "./constants/breadcrumb";
+export type { BreadcrumbRoute } from "./constants/breadcrumb";
+export { accountItems, dashboardItems, hasSubmenu } from "./constants/menu";
+export type {
+  DashboardItem,
+  DashboardItemBase,
+  DashboardItemLink,
+  DashboardItemWithChildren,
+  SubMenuItem,
+} from "./constants/menu";

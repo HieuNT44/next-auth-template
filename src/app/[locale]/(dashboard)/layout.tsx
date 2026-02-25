@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { AppSidebar } from "@/components/app-sidebar";
 import { NotificationButton } from "@/components/notification-button";
 import { ThemeModeToggle } from "@/components/theme-mode-toggle";
@@ -18,8 +19,10 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+import { getBreadcrumb } from "@/core/constants";
 import { UserButton } from "@/features/auth";
 import { Link, usePathname } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 
 export default function DashboardLayout({
   children,
@@ -27,8 +30,8 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  const isProfile = pathname === "/profile" || pathname.startsWith("/profile/");
-  const isProfileSettings = pathname.startsWith("/profile/settings");
+  const segments = getBreadcrumb(pathname);
+  const t = useTranslations("nav");
 
   return (
     <div className='w-full max-w-full min-w-0 overflow-x-hidden'>
@@ -43,37 +46,31 @@ export default function DashboardLayout({
             />
             <Breadcrumb>
               <BreadcrumbList>
-                <BreadcrumbItem className='hidden md:block'>
-                  <BreadcrumbLink href='/' asChild>
-                    <Link href='/'>Dashboard</Link>
-                  </BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator className='hidden md:block' />
-                {isProfile && (
-                  <>
-                    <BreadcrumbItem className='hidden md:block'>
-                      {isProfileSettings ? (
-                        <BreadcrumbLink href='/profile' asChild>
-                          <Link href='/profile'>Profile</Link>
-                        </BreadcrumbLink>
-                      ) : (
-                        <BreadcrumbPage>Profile</BreadcrumbPage>
-                      )}
-                    </BreadcrumbItem>
-                    {isProfileSettings && (
-                      <>
-                        <BreadcrumbSeparator className='hidden md:block' />
-                        <BreadcrumbItem>
-                          <BreadcrumbPage>Settings</BreadcrumbPage>
-                        </BreadcrumbItem>
-                      </>
-                    )}
-                  </>
-                )}
-                {!isProfile && (
+                {segments.length === 0 ? (
                   <BreadcrumbItem>
-                    <BreadcrumbPage>Dashboard</BreadcrumbPage>
+                    <BreadcrumbPage>{t("dashboard")}</BreadcrumbPage>
                   </BreadcrumbItem>
+                ) : (
+                  segments.map((seg, i) => (
+                    <React.Fragment key={seg.href + i}>
+                      {i > 0 && (
+                        <BreadcrumbSeparator className='hidden md:block' />
+                      )}
+                      <BreadcrumbItem
+                        className={
+                          i === segments.length - 1 ? "" : "hidden md:block"
+                        }
+                      >
+                        {i < segments.length - 1 ? (
+                          <BreadcrumbLink href={seg.href} asChild>
+                            <Link href={seg.href}>{t(seg.labelKey)}</Link>
+                          </BreadcrumbLink>
+                        ) : (
+                          <BreadcrumbPage>{t(seg.labelKey)}</BreadcrumbPage>
+                        )}
+                      </BreadcrumbItem>
+                    </React.Fragment>
+                  ))
                 )}
               </BreadcrumbList>
             </Breadcrumb>
