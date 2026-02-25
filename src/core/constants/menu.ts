@@ -16,13 +16,19 @@ import {
   Wallet,
 } from "lucide-react";
 
+/** Code key for the item (React key, state id). */
 export interface SubMenuItem {
-  titleKey: string;
+  name: string;
+  /** i18n key for the label shown on screen (e.g. t(title)) */
+  title: string;
   url: string;
 }
 
 export interface DashboardItemBase {
-  titleKey: string;
+  /** Code key for the item (React key, state id). */
+  name: string;
+  /** i18n key for the menu item label displayed on screen */
+  title: string;
   icon: LucideIcon;
 }
 
@@ -49,63 +55,119 @@ export function hasSubmenu(
 }
 
 export const dashboardItems: DashboardItem[] = [
-  { titleKey: "classicDashboard", url: "/", icon: LayoutDashboard },
   {
-    titleKey: "ecommerce",
+    name: "classicDashboard",
+    title: "classicDashboard",
+    url: "/",
+    icon: LayoutDashboard,
+  },
+  {
+    name: "ecommerce",
+    title: "ecommerce",
     icon: ShoppingCart,
     children: [
-      { titleKey: "ecommerceDashboard", url: "/dashboard/ecommerce" },
-      { titleKey: "productList", url: "/dashboard/ecommerce/products" },
-      { titleKey: "productDetail", url: "/dashboard/ecommerce/products/1" },
-      { titleKey: "addProduct", url: "/dashboard/ecommerce/products/new" },
-      { titleKey: "orderList", url: "/dashboard/ecommerce/orders" },
-      { titleKey: "orderDetail", url: "/dashboard/ecommerce/orders/1" },
+      {
+        name: "ecommerceDashboard",
+        title: "ecommerceDashboard",
+        url: "/dashboard/ecommerce",
+      },
+      {
+        name: "productList",
+        title: "productList",
+        url: "/dashboard/ecommerce/products",
+      },
+      {
+        name: "productDetail",
+        title: "productDetail",
+        url: "/dashboard/ecommerce/products/1",
+      },
+      {
+        name: "addProduct",
+        title: "addProduct",
+        url: "/dashboard/ecommerce/products/new",
+      },
+      {
+        name: "orderList",
+        title: "orderList",
+        url: "/dashboard/ecommerce/orders",
+      },
+      {
+        name: "orderDetail",
+        title: "orderDetail",
+        url: "/dashboard/ecommerce/orders/1",
+      },
     ],
   },
   {
-    titleKey: "paymentDashboard",
-    icon: CreditCard,
-    children: [
-      { titleKey: "ecommerceDashboard", url: "/dashboard/payment" },
-      { titleKey: "transactions", url: "/dashboard/payment/transactions" },
-    ],
-  },
-  {
-    titleKey: "hotel",
+    name: "hotel",
+    title: "hotel",
     icon: Building2,
     children: [
-      { titleKey: "ecommerceDashboard", url: "/dashboard/hotel" },
-      { titleKey: "booking", url: "/dashboard/hotel/booking" },
+      {
+        name: "ecommerceDashboard",
+        title: "ecommerceDashboard",
+        url: "/dashboard/hotel",
+      },
+      { name: "booking", title: "booking", url: "/dashboard/hotel/booking" },
     ],
   },
   {
-    titleKey: "projects",
+    name: "projects",
+    title: "projects",
     url: "/dashboard/projects",
     icon: FolderKanban,
   },
-  { titleKey: "sales", url: "/dashboard/sales", icon: TrendingUp },
-  { titleKey: "analytics", url: "/dashboard/analytics", icon: BarChart3 },
-  { titleKey: "files", url: "/dashboard/files", icon: FileStack },
-  { titleKey: "crypto", url: "/dashboard/crypto", icon: Coins },
-  { titleKey: "academy", url: "/dashboard/academy", icon: GraduationCap },
+  { name: "sales", title: "sales", url: "/dashboard/sales", icon: TrendingUp },
   {
-    titleKey: "hospital",
+    name: "analytics",
+    title: "analytics",
+    url: "/dashboard/analytics",
+    icon: BarChart3,
+  },
+  { name: "files", title: "files", url: "/dashboard/files", icon: FileStack },
+  { name: "crypto", title: "crypto", url: "/dashboard/crypto", icon: Coins },
+  {
+    name: "academy",
+    title: "academy",
+    url: "/dashboard/academy",
+    icon: GraduationCap,
+  },
+  {
+    name: "hospital",
+    title: "hospital",
     url: "/dashboard/hospital",
     icon: HeartPulse,
   },
-  { titleKey: "finance", url: "/dashboard/finance", icon: Wallet },
+  {
+    name: "finance",
+    title: "finance",
+    url: "/dashboard/finance",
+    icon: Wallet,
+  },
 ];
 
 export const accountItems: DashboardItem[] = [
   {
-    titleKey: "profile",
+    name: "profile",
+    title: "profile",
     url: "/profile",
     icon: User,
   },
-  { titleKey: "billing", url: "/billing", icon: CreditCard },
+  { name: "billing", title: "billing", url: "/billing", icon: CreditCard },
   {
-    titleKey: "identityVerification",
+    name: "identityVerification",
+    title: "identityVerification",
     url: "/identity-verification",
     icon: ShieldCheck,
+  },
+  {
+    name: "paymentDashboard",
+    title: "paymentDashboard",
+    icon: CreditCard,
+    children: [
+      // { name: "paymentDocs", title: "paymentDocs", url: "/payment/docs" },
+      { name: "paymentStripe", title: "paymentStripe", url: "/payment/stripe" },
+      { name: "paymentGmo", title: "paymentGmo", url: "/payment/gmo" },
+    ],
   },
 ];

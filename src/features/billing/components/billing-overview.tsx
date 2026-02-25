@@ -1,5 +1,6 @@
 "use client";
 
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -19,9 +20,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Link } from "@/i18n/routing";
-import { ChevronRight, FileCheck } from "lucide-react";
+import { ChevronRight, CreditCard, FileCheck } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
 const FAKE_PAYMENT_METHODS = [
@@ -65,13 +66,67 @@ const FAKE_TRANSACTIONS = [
   },
 ] as const;
 
-export function BillingOverview() {
+interface StripeSessionDetails {
+  payment_status: string;
+  customer_email: string | null;
+  customer_name: string | null;
+  amount_total: number | null;
+  currency: string | null;
+}
+
+interface BillingOverviewProps {
+  stripeSessionId?: string | null;
+  stripeSuccess?: boolean;
+  stripeCanceled?: boolean;
+}
+
+export function BillingOverview({
+  stripeSessionId,
+  stripeSuccess,
+  stripeCanceled,
+}: BillingOverviewProps = {}) {
   const t = useTranslations("billing");
   const tCommon = useTranslations("common");
   const [addPaymentOpen, setAddPaymentOpen] = useState(false);
   const [selectedInvoice, setSelectedInvoice] = useState<
     (typeof FAKE_TRANSACTIONS)[number] | null
   >(null);
+  const [stripeSessionDetails, setStripeSessionDetails] =
+    useState<StripeSessionDetails | null>(null);
+  const [stripeCheckoutLoading, setStripeCheckoutLoading] = useState(false);
+
+  useEffect(() => {
+    if (!stripeSuccess || !stripeSessionId) return;
+    fetch(`/api/payment/stripe/session/${stripeSessionId}`)
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => data && setStripeSessionDetails(data))
+      .catch(() => {});
+  }, [stripeSuccess, stripeSessionId]);
+
+  const handleStripeCheckout = async () => {
+    setStripeCheckoutLoading(true);
+    try {
+      const res = await fetch("/api/payment/stripe/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          amount: 2000,
+          currency: "usd",
+          productName: "Sample payment ($20.00)",
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error ?? "Checkout failed");
+      if (data.url) window.location.href = data.url;
+      else throw new Error("No redirect URL");
+    } catch (err) {
+      toast.error(
+        err instanceof Error ? err.message : t("stripeCheckoutError")
+      );
+    } finally {
+      setStripeCheckoutLoading(false);
+    }
+  };
 
   const handleAddPaymentSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -85,6 +140,47 @@ export function BillingOverview() {
         <h1 className='text-2xl font-bold tracking-tight'>{t("title")}</h1>
         <p className='text-muted-foreground mt-1'>{t("description")}</p>
       </div>
+
+      {stripeSuccess && (
+        <Alert className='border-green-500/50 bg-green-500/5'>
+          <CreditCard className='h-4 w-4' />
+          <AlertTitle>{t("stripeSuccessTitle")}</AlertTitle>
+          <AlertDescription>
+            {stripeSessionDetails?.customer_email
+              ? t("stripeSuccessMessageWithEmail", {
+                  email: stripeSessionDetails.customer_email,
+                })
+              : t("stripeSuccessMessage")}
+          </AlertDescription>
+        </Alert>
+      )}
+      {stripeCanceled && (
+        <Alert variant='destructive'>
+          <AlertTitle>{t("stripeCanceledTitle")}</AlertTitle>
+          <AlertDescription>{t("stripeCanceledMessage")}</AlertDescription>
+        </Alert>
+      )}
+
+      <Card>
+        <CardHeader>
+          <CardTitle>{t("stripeCheckoutCardTitle")}</CardTitle>
+          <CardDescription>
+            {t("stripeCheckoutCardDescription")}
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <Button
+            onClick={handleStripeCheckout}
+            disabled={stripeCheckoutLoading}
+            className='gap-2'
+          >
+            <CreditCard className='h-4 w-4' />
+            {stripeCheckoutLoading
+              ? tCommon("loading")
+              : t("checkoutWithStripe")}
+          </Button>
+        </CardContent>
+      </Card>
 
       <Card>
         <CardHeader>
