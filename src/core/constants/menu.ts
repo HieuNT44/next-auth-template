@@ -174,7 +174,7 @@ export const managementItems: DashboardItem[] = [
         title: "dashboard",
         url: "/file-manage/dashboard",
       },
-      { name: "fileManagerList", title: "list", url: "/management/files/list" },
+      { name: "fileManagerList", title: "list", url: "/file-manage" },
     ],
   },
   {

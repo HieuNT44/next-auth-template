@@ -24,3 +24,15 @@ export interface RecentFileItem {
   uploadDate: string;
   type: "document" | "image" | "video" | "spreadsheet" | "other";
 }
+
+/** Item in file/folder list (file-manage list view) */
+export interface FileListItem {
+  id: string;
+  name: string;
+  isFolder: boolean;
+  fileType?: "document" | "image" | "video" | "spreadsheet" | "other";
+  updatedAt: string;
+  size: string;
+  lastEditedBy: string;
+  lastEditedByInitial?: string;
+}

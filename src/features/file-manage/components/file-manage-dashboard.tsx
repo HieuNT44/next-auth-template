@@ -2,10 +2,10 @@
 
 import { Button } from "@/components/ui/button";
 import { FileCategoryCard } from "@/features/file-manage/components/file-category-card";
-import { StorageUsageChart } from "@/features/file-manage/components/storage-usage-chart";
 import { MonthlyFileTransferCard } from "@/features/file-manage/components/monthly-file-transfer-card";
 import { RecentlyUploadedFilesCard } from "@/features/file-manage/components/recently-uploaded-files-card";
 import { StorageRemainingCard } from "@/features/file-manage/components/storage-remaining-card";
+import { StorageUsageChart } from "@/features/file-manage/components/storage-usage-chart";
 import {
   getFileCategoryStats,
   getRecentlyUploadedFiles,
@@ -28,7 +28,7 @@ export function FileManageDashboard() {
       <div className='flex flex-row flex-wrap items-center justify-between gap-2'>
         <h1 className='text-2xl font-bold tracking-tight'>{t("pageTitle")}</h1>
         <Button variant='outline' size='sm' asChild>
-          <Link href='/files' className='inline-flex items-center gap-2'>
+          <Link href='/file-manage' className='inline-flex items-center gap-2'>
             <FolderOpen className='size-4 shrink-0' aria-hidden />
             {t("viewAllFiles")}
           </Link>
