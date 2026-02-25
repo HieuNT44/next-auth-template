@@ -322,6 +322,60 @@
       }
     }
   },
+  "identityVerification": {
+    "title": "本人確認",
+    "description": "書類と自撮りで本人確認を行います。",
+    "stepDocument": "書類アップロード",
+    "stepFace": "顔認証",
+    "stepSummary": "結果",
+    "documentUpload": {
+      "title": "ID書類をアップロード",
+      "hint": "IDカードまたはパスポートの写真をドラッグ＆ドロップするか、クリックして選択。最大10MB。JPG、PNG、WebP。",
+      "processing": "書類を処理中...",
+      "invalidDoc": "無効な書類です。顔がはっきり写った公式IDの写真をご使用ください。",
+      "noFace": "書類に顔が検出されませんでした。写真付きの書類をアップロードしてください。",
+      "blur": "画像がぼやけています。より鮮明な写真をアップロードしてください。",
+      "format": "ファイル形式またはサイズが無効です。JPG、PNG、WebP、最大10MB。"
+    },
+    "documentConfirm": {
+      "title": "書類情報の確認",
+      "description": "抽出された情報をご確認ください。OKで顔認証へ進むか、キャンセルで再度アップロードできます。",
+      "confirm": "OK — 続ける",
+      "cancel": "キャンセル"
+    },
+    "faceCapture": {
+      "title": "顔認証",
+      "hint": "楕円内に顔を合わせ、準備ができたら「撮影」をクリックしてください。",
+      "capture": "撮影",
+      "captureWhenReady": "フレームに顔を合わせると撮影できます。",
+      "sendingToAi": "システムで照合中",
+      "captureSent": "写真を送信しました。結果を待っています。",
+      "tryAgain": "再試行",
+      "cameraError": "カメラにアクセスできません。カメラの使用を許可して再試行してください。",
+      "noFaceInFrame": "顔が検出されませんでした。フレーム内に顔を合わせてください。",
+      "rateLimitExceeded": "リクエスト制限に達しました。約1分待ってから再試行してください。"
+    },
+    "summary": {
+      "title": "結果",
+      "document": "書類",
+      "selfie": "自撮り",
+      "matchScore": "顔一致",
+      "matched": "一致",
+      "notMatched": "不一致",
+      "retry": "やり直す",
+      "confirm": "確認",
+      "successStatus": "本人確認に成功しました",
+      "failedStatus": "本人確認に失敗しました",
+      "successReason": "顔一致スコアは{percent}%で、80%の基準を満たしています。",
+      "failedReason": "顔一致スコアは{percent}%で、80%の基準を下回っています。",
+      "fields": {
+        "fullName": "氏名",
+        "idNumber": "証明書番号",
+        "dateOfBirth": "生年月日",
+        "expiryDate": "有効期限"
+      }
+    }
+  },
   "metadata": {
     "title": "Next Auth Template",
     "description": "認証機能付きNext.jsテンプレート"

@@ -42,6 +42,7 @@ import {
   GraduationCap,
   HeartPulse,
   LayoutDashboard,
+  ShieldCheck,
   ShoppingCart,
   TrendingUp,
   User,
@@ -128,7 +129,14 @@ const dashboardItems: DashboardItem[] = [
   { title: "Finance", url: "/dashboard/finance", icon: Wallet },
 ];
 
-const accountItems = [{ title: "Profile", url: "/profile", icon: User }];
+const accountItems = [
+  { title: "Profile", url: "/profile", icon: User },
+  {
+    title: "Identity Verification",
+    url: "/identity-verification",
+    icon: ShieldCheck,
+  },
+];
 
 const HOVER_CLOSE_DELAY_MS = 150;
 
@@ -339,7 +347,7 @@ export function AppSidebar() {
                     asChild
                     isActive={isActive(item.url)}
                     tooltip={item.title}
-                    className='hover:bg-[#E4E4E7]'
+                    className='hover:bg-[#E4E4E7] data-[active=true]:bg-gray-200 data-[active=true]:text-gray-900 dark:data-[active=true]:bg-gray-700 dark:data-[active=true]:text-gray-100'
                   >
                     <Link href={item.url}>
                       <item.icon />

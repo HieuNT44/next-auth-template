@@ -322,6 +322,60 @@
       }
     }
   },
+  "identityVerification": {
+    "title": "Identity Verification",
+    "description": "Verify your identity with a document and a selfie.",
+    "stepDocument": "Upload document",
+    "stepFace": "Face verification",
+    "stepSummary": "Result",
+    "documentUpload": {
+      "title": "Upload your ID document",
+      "hint": "Drag & drop a photo of your ID card or passport, or click to select. Max 10MB. JPG, PNG or WebP.",
+      "processing": "Processing document...",
+      "invalidDoc": "Invalid document. Please use a clear photo of an official ID with your face visible.",
+      "noFace": "No face detected on the document. Please upload a document that shows your photo.",
+      "blur": "Image is too blurry. Please upload a clearer photo.",
+      "format": "Invalid file format or size. Use JPG, PNG or WebP, max 10MB."
+    },
+    "documentConfirm": {
+      "title": "Confirm document information",
+      "description": "Please verify the extracted information below. Click OK to continue to face verification, or Cancel to upload again.",
+      "confirm": "OK — Continue",
+      "cancel": "Cancel"
+    },
+    "faceCapture": {
+      "title": "Face verification",
+      "hint": "Position your face in the oval and click Capture when ready.",
+      "capture": "Capture",
+      "captureWhenReady": "Position your face in the frame to enable capture.",
+      "sendingToAi": "System is verifying...",
+      "captureSent": "Photo sent. Waiting for result.",
+      "tryAgain": "Try again",
+      "cameraError": "Could not access camera. Please allow camera access and try again.",
+      "noFaceInFrame": "No face detected. Please position your face in the frame.",
+      "rateLimitExceeded": "Rate limit exceeded. Please wait about 1 minute and try again."
+    },
+    "summary": {
+      "title": "Result",
+      "document": "Document",
+      "selfie": "Selfie",
+      "matchScore": "Face match",
+      "matched": "Matched",
+      "notMatched": "Not matched",
+      "retry": "Try again",
+      "confirm": "Confirm",
+      "successStatus": "Verification successful",
+      "failedStatus": "Verification failed",
+      "successReason": "Face match score is {percent}%, meeting the 80% threshold.",
+      "failedReason": "Face match score is {percent}%, below the 80% threshold.",
+      "fields": {
+        "fullName": "Full name",
+        "idNumber": "ID number",
+        "dateOfBirth": "Date of birth",
+        "expiryDate": "Expiry date"
+      }
+    }
+  },
   "metadata": {
     "title": "Next Auth Template",
     "description": "A Next.js template with authentication"
