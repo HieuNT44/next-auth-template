@@ -72,7 +72,8 @@ interface StorageUsageChartProps {
     others: string;
     remaining: string;
   };
-  tooltipUnitLabel: string;
+  /** Template string with "{value}" or function that receives value and returns label */
+  tooltipUnitLabel: string | ((value: number) => string);
 }
 
 export function StorageUsageChart({
@@ -106,11 +107,18 @@ export function StorageUsageChart({
           for (let i = 1; i < treePathInfo.length; i++) {
             treePath.push(treePathInfo[i].name);
           }
+          const label =
+            typeof tooltipUnitLabel === "function"
+              ? tooltipUnitLabel(value)
+              : tooltipUnitLabel.replace(
+                  "{value}",
+                  formatUtil.addCommas(value)
+                );
           return [
             '<div class="tooltip-title">' +
               formatUtil.encodeHTML(treePath.join("/")) +
               "</div>",
-            tooltipUnitLabel.replace("{value}", formatUtil.addCommas(value)),
+            label,
           ].join("");
         },
       },

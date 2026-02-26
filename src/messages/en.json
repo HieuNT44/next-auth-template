@@ -666,6 +666,13 @@
     "list": {
       "pageTitle": "Files",
       "upload": "Upload",
+      "uploadModalTitle": "Upload Files",
+      "uploadModalDescription": "Drag and drop files here or click to select files",
+      "uploadModalDropzoneMainLabel": "Upload a file or drag and drop",
+      "uploadModalDropzoneHintLabel": "PNG, JPG, GIF, WebP, PDF, DOCX, XLSX, PPTX, MP4, WebM, MOV up to 50MB",
+      "uploadModalCancelLabel": "Cancel",
+      "uploadModalStartUploadLabel": "Start Upload",
+      "uploadModalDoneLabel": "Done",
       "searchPlaceholder": "Search for files and folders...",
       "sortLabel": "Sort:",
       "sortByNameDesc": "Name ↓",

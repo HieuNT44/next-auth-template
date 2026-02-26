@@ -665,6 +665,13 @@
     "list": {
       "pageTitle": "ファイル",
       "upload": "アップロード",
+      "uploadModalTitle": "ファイルをアップロード",
+      "uploadModalDescription": "ファイルをここにドラッグ＆ドロップするか、クリックして選択してください",
+      "uploadModalDropzoneMainLabel": "ファイルをアップロードするか、ドラッグ＆ドロップ",
+      "uploadModalDropzoneHintLabel": "PNG、JPG、GIF、WebP、PDF、DOCX、XLSX、PPTX、MP4、WebM、MOV 最大50MB",
+      "uploadModalCancelLabel": "キャンセル",
+      "uploadModalStartUploadLabel": "アップロード開始",
+      "uploadModalDoneLabel": "完了",
       "searchPlaceholder": "ファイル・フォルダを検索...",
       "sortLabel": "並び替え:",
       "sortByNameDesc": "名前 ↓",

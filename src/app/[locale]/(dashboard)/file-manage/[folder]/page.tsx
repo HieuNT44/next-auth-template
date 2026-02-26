@@ -46,6 +46,13 @@ export default async function FileManageFolderPage({
       actionDelete={t("actionDelete")}
       openMenuLabel={t("openMenu")}
       emptyState={t("emptyState")}
+      uploadModalTitle={t("uploadModalTitle")}
+      uploadModalDescription={t("uploadModalDescription")}
+      uploadModalDropzoneMainLabel={t("uploadModalDropzoneMainLabel")}
+      uploadModalDropzoneHintLabel={t("uploadModalDropzoneHintLabel")}
+      uploadModalCancelLabel={t("uploadModalCancelLabel")}
+      uploadModalStartUploadLabel={t("uploadModalStartUploadLabel")}
+      uploadModalDoneLabel={t("uploadModalDoneLabel")}
       sidebarInfoLabel={t("sidebarInfoLabel")}
       sidebarTypeLabel={t("sidebarTypeLabel")}
       sidebarSizeLabel={t("sidebarSizeLabel")}

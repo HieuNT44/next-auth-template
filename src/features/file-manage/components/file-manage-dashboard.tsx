@@ -69,7 +69,7 @@ export function FileManageDashboard() {
             others: t("others"),
             remaining: t("storageRemaining"),
           }}
-          tooltipUnitLabel={t("storageUsageChartTooltip")}
+          tooltipUnitLabel={(value) => t("storageUsageChartTooltip", { value })}
         />
       </section>
       <section className='grid gap-4 lg:grid-cols-2'>

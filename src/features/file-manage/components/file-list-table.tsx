@@ -27,6 +27,7 @@ import {
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Link } from "@/i18n/routing";
 import type { FileListItem } from "@/features/file-manage/types";
+import { FileUploadModal } from "@/features/file-manage/components/file-upload-modal";
 import {
   ChevronDown,
   FileSpreadsheet,
@@ -133,6 +134,14 @@ interface FileListTableProps {
   sidebarTypeFile: string;
   sidebarTypeFolder: string;
   sidebarLocationDefault: string;
+  /** Upload modal labels */
+  uploadModalTitle: string;
+  uploadModalDescription: string;
+  uploadModalDropzoneMainLabel: string;
+  uploadModalDropzoneHintLabel: string;
+  uploadModalCancelLabel: string;
+  uploadModalStartUploadLabel: string;
+  uploadModalDoneLabel: string;
   items: FileListItem[];
 }
 
@@ -170,12 +179,20 @@ export function FileListTable({
   sidebarTypeFile,
   sidebarTypeFolder,
   sidebarLocationDefault,
+  uploadModalTitle,
+  uploadModalDescription,
+  uploadModalDropzoneMainLabel,
+  uploadModalDropzoneHintLabel,
+  uploadModalCancelLabel,
+  uploadModalStartUploadLabel,
+  uploadModalDoneLabel,
   items,
 }: FileListTableProps) {
   const [search, setSearch] = useState("");
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
   const [sortBy, setSortBy] = useState<SortByOption>("name");
   const [detailItem, setDetailItem] = useState<FileListItem | null>(null);
+  const [uploadModalOpen, setUploadModalOpen] = useState(false);
   const [fileSharingOn, setFileSharingOn] = useState(true);
   const [backupOn, setBackupOn] = useState(false);
   const [syncOn, setSyncOn] = useState(false);
@@ -238,7 +255,7 @@ export function FileListTable({
     <div className='FileListTable flex flex-col gap-4'>
       <div className='flex flex-row flex-wrap items-center justify-between gap-2'>
         <h1 className='text-2xl font-bold tracking-tight'>{title}</h1>
-        <Button size='sm'>
+        <Button size='sm' onClick={() => setUploadModalOpen(true)}>
           <Upload className='size-4 shrink-0' aria-hidden />
           {uploadLabel}
         </Button>
@@ -552,6 +569,18 @@ export function FileListTable({
           )}
         </SheetContent>
       </Sheet>
+
+      <FileUploadModal
+        open={uploadModalOpen}
+        onOpenChange={setUploadModalOpen}
+        title={uploadModalTitle}
+        description={uploadModalDescription}
+        dropzoneMainLabel={uploadModalDropzoneMainLabel}
+        dropzoneHintLabel={uploadModalDropzoneHintLabel}
+        cancelButtonLabel={uploadModalCancelLabel}
+        startUploadButtonLabel={uploadModalStartUploadLabel}
+        doneButtonLabel={uploadModalDoneLabel}
+      />
     </div>
   );
 }

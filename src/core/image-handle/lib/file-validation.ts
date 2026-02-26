@@ -73,18 +73,21 @@ export async function validateFiles(
     }
 
     if (maxWidth != null || maxHeight != null) {
-      try {
-        const { width, height } = await getImageDimensions(file);
-        if (
-          (maxWidth != null && width > maxWidth) ||
-          (maxHeight != null && height > maxHeight)
-        ) {
+      const isImage = mime.startsWith("image/");
+      if (isImage) {
+        try {
+          const { width, height } = await getImageDimensions(file);
+          if (
+            (maxWidth != null && width > maxWidth) ||
+            (maxHeight != null && height > maxHeight)
+          ) {
+            errors.push({ file, message: MESSAGES.dimensionExceeded });
+            continue;
+          }
+        } catch {
           errors.push({ file, message: MESSAGES.dimensionExceeded });
           continue;
         }
-      } catch {
-        errors.push({ file, message: MESSAGES.dimensionExceeded });
-        continue;
       }
     }
 
