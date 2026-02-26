@@ -11,8 +11,9 @@ export function generateStaticParams() {
 }
 
 export const metadata: Metadata = {
-  title: "Next Auth Template",
-  description: "A Next.js template with authentication",
+  title: "TOMOSIA Template KIT",
+  description:
+    "TOMOSIA Template KIT — Next.js template with authentication, i18n, and dashboard.",
 };
 
 interface LocaleLayoutProps {

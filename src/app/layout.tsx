@@ -13,6 +13,7 @@ export default function RootLayout({
   return (
     <html lang='en' suppressHydrationWarning className={fontVariable}>
       <head>
+        <link rel='icon' href='/image/logo.webp' type='image/webp' />
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(){try{var s=localStorage.getItem("color-theme");if(s){var ok=["zinc","red","orange","amber","yellow","lime","green","emerald","teal","cyan","sky","blue","indigo","violet","purple","fuchsia","pink","rose","slate","gray","neutral","stone"];if(ok.indexOf(s)!==-1)document.documentElement.setAttribute("data-color-theme",s);}}catch(e){}})();`,

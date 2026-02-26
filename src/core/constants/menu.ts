@@ -10,14 +10,12 @@ import {
   FolderKanban,
   GraduationCap,
   HeartPulse,
-  LayoutDashboard,
+  Kanban,
   Package,
   ShieldCheck,
   ShoppingCart,
-  TrendingUp,
   User,
   Users,
-  Wallet,
 } from "lucide-react";
 
 /** Code key for the item (React key, state id). */
@@ -34,6 +32,8 @@ export interface DashboardItemBase {
   /** i18n key for the menu item label displayed on screen */
   title: string;
   icon: LucideIcon;
+  /** When true, item is shown but not clickable (e.g. coming soon). */
+  disabled?: boolean;
 }
 
 export interface DashboardItemLink extends DashboardItemBase {
@@ -60,15 +60,29 @@ export function hasSubmenu(
 
 export const dashboardItems: DashboardItem[] = [
   {
-    name: "classicDashboard",
-    title: "classicDashboard",
-    url: "/",
-    icon: LayoutDashboard,
+    name: "kanban",
+    title: "kanban",
+    url: "/kanban",
+    icon: Kanban,
+  },
+  {
+    name: "hotelBooking",
+    title: "hotelBooking",
+    icon: Building2,
+    children: [
+      {
+        name: "hotelDashboard",
+        title: "hotelDashboard",
+        url: "/hotel-dashboard",
+      },
+      { name: "booking", title: "booking", url: "/hotel/booking" },
+    ],
   },
   {
     name: "ecommerce",
     title: "ecommerce",
     icon: ShoppingCart,
+    disabled: true,
     children: [
       {
         name: "ecommerceDashboard",
@@ -103,50 +117,39 @@ export const dashboardItems: DashboardItem[] = [
     ],
   },
   {
-    name: "hotel",
-    title: "hotel",
-    icon: Building2,
-    children: [
-      {
-        name: "ecommerceDashboard",
-        title: "ecommerceDashboard",
-        url: "/dashboard/hotel",
-      },
-      { name: "booking", title: "booking", url: "/dashboard/hotel/booking" },
-    ],
-  },
-  {
     name: "projects",
     title: "projects",
     url: "/dashboard/projects",
     icon: FolderKanban,
+    disabled: true,
   },
-  { name: "sales", title: "sales", url: "/dashboard/sales", icon: TrendingUp },
   {
     name: "analytics",
     title: "analytics",
     url: "/dashboard/analytics",
     icon: BarChart3,
+    disabled: true,
   },
-  { name: "files", title: "files", url: "/dashboard/files", icon: FileStack },
-  { name: "crypto", title: "crypto", url: "/dashboard/crypto", icon: Coins },
+  {
+    name: "crypto",
+    title: "crypto",
+    url: "/dashboard/crypto",
+    icon: Coins,
+    disabled: true,
+  },
   {
     name: "academy",
     title: "academy",
     url: "/dashboard/academy",
     icon: GraduationCap,
+    disabled: true,
   },
   {
     name: "hospital",
     title: "hospital",
     url: "/dashboard/hospital",
     icon: HeartPulse,
-  },
-  {
-    name: "finance",
-    title: "finance",
-    url: "/dashboard/finance",
-    icon: Wallet,
+    disabled: true,
   },
 ];
 
@@ -181,6 +184,7 @@ export const managementItems: DashboardItem[] = [
     name: "productManager",
     title: "productManager",
     icon: Package,
+    disabled: true,
     children: [
       {
         name: "productManagerDashboard",
@@ -198,6 +202,7 @@ export const managementItems: DashboardItem[] = [
     name: "companyManager",
     title: "companyManager",
     icon: Building2,
+    disabled: true,
     children: [
       {
         name: "companyManagerDashboard",
@@ -215,6 +220,7 @@ export const managementItems: DashboardItem[] = [
     name: "transactionsManager",
     title: "transactionsManager",
     icon: ArrowLeftRight,
+    disabled: true,
     children: [
       {
         name: "transactionsManagerDashboard",
@@ -231,12 +237,6 @@ export const managementItems: DashboardItem[] = [
 ];
 
 export const accountItems: DashboardItem[] = [
-  {
-    name: "notifications",
-    title: "notifications",
-    url: "/notifications",
-    icon: Bell,
-  },
   {
     name: "profile",
     title: "profile",
@@ -259,5 +259,11 @@ export const accountItems: DashboardItem[] = [
       { name: "paymentStripe", title: "paymentStripe", url: "/payment/stripe" },
       { name: "paymentGmo", title: "paymentGmo", url: "/payment/gmo" },
     ],
+  },
+  {
+    name: "notifications",
+    title: "notifications",
+    url: "/notifications",
+    icon: Bell,
   },
 ];

@@ -28,16 +28,16 @@ import {
   SidebarRail,
   useSidebar,
 } from "@/components/ui/sidebar";
-import {
-  accountItems,
-  dashboardItems,
-  managementItems,
-  hasSubmenu,
-} from "@/core/constants";
 import type {
   DashboardItem,
   DashboardItemWithChildren,
   SubMenuItem,
+} from "@/core/constants";
+import {
+  accountItems,
+  dashboardItems,
+  hasSubmenu,
+  managementItems,
 } from "@/core/constants";
 import { LogoutButton } from "@/features/auth";
 import { Link, usePathname } from "@/i18n/routing";
@@ -138,10 +138,10 @@ export function AppSidebar() {
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>{t("menu")}</SidebarGroupLabel>
+          <SidebarGroupLabel>{t("account")}</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {dashboardItems.map((item: DashboardItem) =>
+              {accountItems.map((item: DashboardItem) =>
                 hasSubmenu(item) ? (
                   <SidebarMenuItem key={item.name}>
                     {isCollapsed ? (
@@ -248,7 +248,27 @@ export function AppSidebar() {
           <SidebarGroupContent>
             <SidebarMenu>
               {managementItems.map((item: DashboardItem) =>
-                hasSubmenu(item) ? (
+                item.disabled ? (
+                  <SidebarMenuItem key={item.name}>
+                    <SidebarMenuButton
+                      disabled
+                      aria-disabled
+                      tooltip={t(item.title)}
+                      className='pointer-events-none opacity-50 hover:bg-transparent data-[state=open]:bg-transparent'
+                    >
+                      <item.icon />
+                      <span className='flex flex-1 items-center gap-2'>
+                        {t(item.title)}
+                        <span
+                          className='bg-muted text-muted-foreground rounded px-1.5 py-0.5 text-[10px] font-medium group-data-[collapsible=icon]:hidden'
+                          aria-hidden
+                        >
+                          {t("soon")}
+                        </span>
+                      </span>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ) : hasSubmenu(item) ? (
                   <SidebarMenuItem key={item.name}>
                     {isCollapsed ? (
                       <DropdownMenu
@@ -356,11 +376,31 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
         <SidebarGroup>
-          <SidebarGroupLabel>{t("account")}</SidebarGroupLabel>
+          <SidebarGroupLabel>{t("apps")}</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {accountItems.map((item: DashboardItem) =>
-                hasSubmenu(item) ? (
+              {dashboardItems.map((item: DashboardItem) =>
+                item.disabled ? (
+                  <SidebarMenuItem key={item.name}>
+                    <SidebarMenuButton
+                      disabled
+                      aria-disabled
+                      tooltip={t(item.title)}
+                      className='pointer-events-none opacity-50 hover:bg-transparent data-[state=open]:bg-transparent'
+                    >
+                      <item.icon />
+                      <span className='flex flex-1 items-center gap-2'>
+                        {t(item.title)}
+                        <span
+                          className='bg-muted text-muted-foreground rounded px-1.5 py-0.5 text-[10px] font-medium group-data-[collapsible=icon]:hidden'
+                          aria-hidden
+                        >
+                          {t("soon")}
+                        </span>
+                      </span>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ) : hasSubmenu(item) ? (
                   <SidebarMenuItem key={item.name}>
                     {isCollapsed ? (
                       <DropdownMenu

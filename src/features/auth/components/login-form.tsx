@@ -76,25 +76,25 @@ export function LoginForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="grid gap-4">
+        <div className='grid gap-4'>
           {formState.error && (
-            <Alert variant="destructive">
-              <AlertCircle className="h-4 w-4" />
+            <Alert variant='destructive'>
+              <AlertCircle className='h-4 w-4' />
               <AlertDescription>{formState.error}</AlertDescription>
             </Alert>
           )}
 
           <FormField
             control={form.control}
-            name="email"
+            name='email'
             render={({ field }) => (
-              <FormItem className="grid gap-2">
+              <FormItem className='grid gap-2'>
                 <FormLabel>{t("email")}</FormLabel>
                 <FormControl>
                   <Input
-                    type="email"
+                    type='email'
                     placeholder={t("emailPlaceholder")}
-                    autoComplete="email"
+                    autoComplete='email'
                     {...field}
                   />
                 </FormControl>
@@ -105,14 +105,14 @@ export function LoginForm() {
 
           <FormField
             control={form.control}
-            name="password"
+            name='password'
             render={({ field }) => (
-              <FormItem className="grid gap-2">
-                <div className="flex items-center">
+              <FormItem className='grid gap-2'>
+                <div className='flex items-center'>
                   <FormLabel>{t("password")}</FormLabel>
                   <Link
-                    href="/forgot-password"
-                    className="ml-auto inline-block text-sm underline"
+                    href='/forgot-password'
+                    className='ml-auto inline-block text-sm underline'
                   >
                     {t("forgotPassword")}
                   </Link>
@@ -120,7 +120,7 @@ export function LoginForm() {
                 <FormControl>
                   <PasswordInput
                     placeholder={t("passwordPlaceholder")}
-                    autoComplete="current-password"
+                    autoComplete='current-password'
                     {...field}
                   />
                 </FormControl>
@@ -129,23 +129,35 @@ export function LoginForm() {
             )}
           />
 
-          <Button type="submit" className="w-full" disabled={formState.isLoading}>
+          <Button
+            type='submit'
+            className='w-full'
+            disabled={formState.isLoading}
+          >
             {formState.isLoading ? t("submitting") : t("submit")}
           </Button>
 
+          <p className='text-muted-foreground text-xs'>{t("demoHint")}</p>
+          <div className='bg-muted/50 text-muted-foreground rounded-md border px-3 py-2 font-mono text-xs'>
+            <span className='font-medium'>{t("demoEmail")}:</span>{" "}
+            hieu.nguyen2@tomosia.com
+            <br />
+            <span className='font-medium'>{t("demoPassword")}:</span> tomosia-vn
+          </div>
+
           <SocialLoginDivider />
 
-          <div className="flex justify-center gap-4">
-            <GoogleLoginButton mode="login" disabled={formState.isLoading} />
-            <FacebookLoginButton mode="login" disabled={formState.isLoading} />
-            <InstagramLoginButton mode="login" disabled={formState.isLoading} />
-            <LineLoginButton mode="login" disabled={formState.isLoading} />
+          <div className='flex justify-center gap-4'>
+            <GoogleLoginButton mode='login' disabled={formState.isLoading} />
+            <FacebookLoginButton mode='login' disabled={formState.isLoading} />
+            <InstagramLoginButton mode='login' disabled={formState.isLoading} />
+            <LineLoginButton mode='login' disabled={formState.isLoading} />
           </div>
         </div>
 
-        <div className="mt-4 text-center text-sm">
+        <div className='mt-4 text-center text-sm'>
           {t("noAccount")}{" "}
-          <Link href="/register" className="underline">
+          <Link href='/register' className='underline'>
             {t("register")}
           </Link>
         </div>

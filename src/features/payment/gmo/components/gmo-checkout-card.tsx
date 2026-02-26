@@ -119,7 +119,7 @@ export function GmoCheckoutCard({
           </p>
           <Button
             onClick={handleCheckout}
-            disabled={loading}
+            disabled
             className='w-full gap-2 sm:w-auto'
             size='lg'
           >
