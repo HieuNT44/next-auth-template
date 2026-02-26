@@ -6,5 +6,5 @@ interface HomePageProps {
 
 export default async function HomePage({ params }: HomePageProps) {
   const { locale } = await params;
-  redirect({ href: "/doc", locale });
+  redirect({ href: "/login", locale });
 }
